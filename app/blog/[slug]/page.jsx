@@ -12,10 +12,12 @@ export const generateStaticParams = async () => {
 
 const PostPage =  async (props) => {
   const slug  = props.params.slug;
-  const {title, html} = (await getPosts()).find((post) => post.slug === slug);
+  const {title, html, time, date} = (await getPosts()).find((post) => post.slug === slug);
   return (
-    <div className="prose dark:prose-dark dark:bg-slate-700 m-auto py-12 px-24 ">
+    <div className="prose dark:prose-dark dark:bg-zinc-800 m-auto  py-12 px-24 ">
       <h1>{title}</h1>
+      <h2 className="text-sm">{time} {date}</h2>
+
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
